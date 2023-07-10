@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RankingGrid = ({ items, imgArr }) => {
+const RankingGrid = ({ items, imgArr, drag, allowDrop, drop }) => {
   const rankingGrid = [];
   const cellCollectionTop = [];
   const cellCollectionMiddle = [];
@@ -11,12 +11,29 @@ const RankingGrid = ({ items, imgArr }) => {
     if (rankNum > 0) {
       var item = items.find((o) => o.ranking === rankNum);
       cellCollection.push(
-        <div id={`rank-${rankNum}`} className='rank-cell'></div>
+        <div
+          id={`rank-${rankNum}`}
+          onDrop={drop}
+          onDragOver={allowDrop}
+          className='rank-cell'
+        >
+          {item != null ? (
+            <img
+              id={`item-${item.id}`}
+              src={imgArr.find((o) => o.id === item.imageId)?.image}
+              alt={item.id}
+              draggable='true'
+              onDragStart={drag}
+            />
+          ) : null}
+        </div>
       );
     } else {
-      cellCollection.push(<div className='row-label'>
-        <h4>{rowLabel}</h4>
-      </div>);
+      cellCollection.push(
+        <div className='row-label'>
+          <h4>{rowLabel}</h4>
+        </div>
+      );
     }
   }
 
@@ -26,7 +43,7 @@ const RankingGrid = ({ items, imgArr }) => {
     var label = '';
     const numCells = 5;
 
-    for (let a = 0; a < numCells; a++) {
+    for (var a = 1; a <= numCells; a++) {
       rankNum = a === 1 ? 0 : numCells * (rowNum - 1) + a - rowNum;
 
       if (rowNum === 1) {
@@ -52,7 +69,7 @@ const RankingGrid = ({ items, imgArr }) => {
 
   function createCellsForRows() {
     const maxRows = 4;
-    for (let row = 0; row < maxRows; row++) {
+    for (let row = 1; row <= maxRows; row++) {
       createCellsForRow(row);
     }
   }
