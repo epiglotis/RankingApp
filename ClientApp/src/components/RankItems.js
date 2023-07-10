@@ -53,6 +53,7 @@ const RankItems = () => {
       <div className='items-not-ranked'>
         {items.length > 0 ? (
           items.map((item) => (
+          (item.ranking === 0) ? 
             <div className='unranked-cell'>
               <img
                 id={`item-${item.id}`}
@@ -62,7 +63,7 @@ const RankItems = () => {
                 draggable='true'
                 onDragStart={drag}
               />
-            </div>
+            </div> : null
           ))
         ) : (
           <div>Loading...</div>
