@@ -20,7 +20,7 @@ const RankItems = () => {
     if (targetElm.nodeName === 'IMG') {
       return false;
     }
-    if (targetElm.childNodes.lenght === 0) {
+    if (targetElm.childNodes.length === 0) {
       var data = parseInt(ev.dataTransfer.getData('text').substring(5));
       const transformedCollection = items.map((item) =>
         item.id === parseInt(data)
