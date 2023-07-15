@@ -2,7 +2,7 @@
   .Net Core and React Project. My introduction to working with React and .Net Core
   
 # 💫 How to view:
-🔭 Simply write "npm start" to the terminal or click this link: https://epiglotis.github.io/Portfolio-React/
+🔭 Simply open this project with Visual Studio and run.
 
 
 ## 🌐 Socials:
